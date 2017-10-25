@@ -12,7 +12,7 @@ export class Body extends React.Component{
             <div className="body-top">
 
             </div>
-            <MainBodyArea/>
+            <MainBodyArea rootStore={this.props.rootStore}/>
         </div>;
     }
 }

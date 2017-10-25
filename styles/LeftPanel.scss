@@ -1,0 +1,17 @@
+@import "./colors.scss";
+
+.main-left-panel{
+  height: 100%;
+  background-color: $gray-bg;
+}
+
+.main-left-panel-open{
+  width: 250px;
+}
+.main-left-panel-close{
+  width: 50px;
+}
+
+.search-bar{
+  margin: 0.3rem;
+}
