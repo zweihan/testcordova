@@ -2,12 +2,15 @@
  * Created by weihan on 24/10/17.
  */
 import AppStateStore from './AppStateStore';
-
+import StockStateStore from './StockStateStore';
 
 export default class RootStore {
     appStateStore;
-
+    stockState;
     constructor(){
-        this.appStateStore = new AppStateStore();
+        this.appState = new AppStateStore();
+        console.log("asdaddds");
+        this.stockState = new StockStateStore();
+        console.log(this.stockState);
     }
 }

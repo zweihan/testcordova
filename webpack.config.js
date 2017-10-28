@@ -3,6 +3,7 @@
  */
 const path = require('path');
 const autoprefixer = require("autoprefixer");
+// console.log("asdsad", autoprefixer());
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -28,13 +29,14 @@ module.exports = {
     module: {
         rules: [
             {
+
                 test: /\.(js|jsx)?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2015', 'react'],
-                        plugins: ['transform-decorators-legacy']
+                        plugins: ['transform-decorators-legacy', "transform-runtime", "transform-async-to-generator"],
+                        presets: ['es2015', 'stage-0', 'react']
                     }
 
                 }
@@ -43,7 +45,7 @@ module.exports = {
 
             {
                 test: /\.scss$/,
-                exclude: /main\.scss/,
+                // exclude: /main\.scss/,
                 include: [
                     path.resolve(__dirname, "styles/")
                 ],
@@ -53,20 +55,18 @@ module.exports = {
                 {loader: "sass-loader"},
                 {loader: "postcss-loader", options:{plugins: [autoprefixer()]}}
             ]},
+
             {
-                test: /main/,
-                include: [
-                    path.resolve(__dirname, "styles/")
-                ],
-                use: extractScss.extract({
-                    use:[
-                        {loader: 'css-loader'},
-                        {loader: 'sass-loader'}
-                    ]
-                })
+                test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/',    // where the fonts will go
+                        publicPath: '../'       // override the default path
+                    }
+                }]
             },
-
-
             {enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]
     },
@@ -76,11 +76,6 @@ module.exports = {
         new HtmlWebpackPlugin({
            inject: true,
             template: "index.html"
-        }),
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                postcss: [autoprefixer()]
-            }
         })
     ],
     devServer: {

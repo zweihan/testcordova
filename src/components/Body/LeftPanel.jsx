@@ -1,21 +1,32 @@
 import * as React from "react";
-
+import {observer} from "mobx-react";
 import SearchBar from "./SearchBar";
 
 require("../../../styles/LeftPanel.scss");
 
-export default class LeftPanel extends React.Component {
+
+@observer class LeftPanel extends React.Component {
+    togglePanelPosition(){
+        this.props.rootStore.appState.toggleLeftPanelPosition();
+    }
+
+
     render() {
         // var isSearchBarOpen = ;
-        var isSearchBarOpen = this.props.rootStore.appStateStore.leftPanelOpenState;
+        var isSearchBarOpen = this.props.rootStore.appState.leftPanelOpenState;
         return <div className={"main-left-panel " + (isSearchBarOpen ? "main-left-panel-open": "main-left-panel-close")}>
             <div className="left-panel-header">
-
+                <span className={"fa close-panel-btn " +(isSearchBarOpen ? "fa-chevron-left" : "fa-chevron-right" )}
+                      onClick={this.togglePanelPosition.bind(this)}
+                >
+                x
+                </span>
             </div>
             <div className="left-panel-body">
-                <SearchBar />
+                {isSearchBarOpen ? <SearchBar/>:<div></div>}
 
             </div>
         </div>;
     }
 }
+export default LeftPanel;
