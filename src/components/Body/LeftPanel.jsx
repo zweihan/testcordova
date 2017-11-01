@@ -1,6 +1,7 @@
 import * as React from "react";
 import {observer} from "mobx-react";
 import SearchBar from "./SearchBar";
+import StockList from "./StockList";
 
 require("../../../styles/LeftPanel.scss");
 
@@ -23,8 +24,8 @@ require("../../../styles/LeftPanel.scss");
                 </span>
             </div>
             <div className="left-panel-body">
-                {isSearchBarOpen ? <SearchBar/>:<div></div>}
-
+                {isSearchBarOpen ? <SearchBar rootStore = {this.props.rootStore}/>:<div></div>}
+                {isSearchBarOpen ? <StockList rootStore ={this.props.rootStore}/>:<div></div>}
             </div>
         </div>;
     }

@@ -1,12 +1,14 @@
 import * as React from "react";
-
+import {observer} from "mobx-react";
 require("../../../styles/RightPanel.scss");
 
+@observer
 export default class RightPanel extends React.Component {
+
     render() {
-        var selectedStock = this.props.rootStore.appState.selectedStock;
-        return <div class="main-right-panel">
-            <div class="right-panel-title">{selectedStock ? selectedStock : "Pick a Stock"}</div>
+        var selectedStock = this.props.rootStore.stockState.selectedStock;
+        return <div className="main-right-panel">
+            <div className="right-panel-title">{selectedStock.name ? selectedStock.name : "Pick a Stock"}</div>
         </div>;
 
     }

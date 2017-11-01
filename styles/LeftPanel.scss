@@ -3,6 +3,7 @@
 .main-left-panel{
   height: 100%;
   background-color: $gray-bg;
+  position:relative;
 }
 
 .main-left-panel-open{
@@ -12,12 +13,22 @@
   width: 30px;
 }
 .left-panel-header{
+  height:2rem;
   display:flex;
   flex-direction:row-reverse;
   .close-panel-btn{
     cursor:pointer;
     margin: 0.5rem;
   }
+}
+.left-panel-body{
+  position:absolute;
+  top:2rem;
+  bottom:0;
+  width:100%;
+}
+.search-bar{
+  height:5.5rem;
 }
 
 .search-bar-title{
@@ -39,4 +50,24 @@
     margin-left:0.3rem;
     font-size: 1.3rem;
   }
+}
+.stocklist{
+  top:5.5rem;
+  bottom:0;
+  position:absolute;
+  width:100%;
+
+}
+.stocklist-item{
+  list-style-type: none;
+  color: $light-font;
+  padding-left: 3rem;
+  cursor:pointer;
+  &:hover{
+    background-color:lighten($orange-bg,10%);
+  }
+  &.selected{
+    background-color: $orange-bg;
+  }
+
 }
