@@ -3,8 +3,19 @@
 .main-right-panel{
   flex-grow: 2;
   padding: 0.5rem;
+  display:flex;
+  flex-direction: column;
 }
 
 .right-panel-title{
   font-size: 2rem;
+}
+
+.right-panel-body{
+  flex-grow:2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
 }

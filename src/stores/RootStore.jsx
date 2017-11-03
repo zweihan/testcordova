@@ -9,8 +9,6 @@ export default class RootStore {
     stockState;
     constructor(){
         this.appState = new AppStateStore();
-        console.log("asdaddds");
         this.stockState = new StockStateStore();
-        console.log(this.stockState);
     }
 }

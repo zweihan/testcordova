@@ -1,0 +1,33 @@
+@import "colors";
+.stock-card{
+  background: darken($light-bg, 5%);
+  padding: 10px;
+  .card-header{
+    margin-bottom: 15px;
+  }
+  .price-header {
+    .latest-price {
+      font-size: 3.5rem;
+      font-weight: bold;
+      padding-right: 10px;
+    }
+    .price-change {
+      font-size: 2rem;
+      &.pos-change {
+        color: $green;
+        &:before {
+          content: "+";
+        }
+      }
+      &.neg-change {
+        color: $red;
+      }
+    }
+  }
+  .price-info{
+    font-size: 0.75rem;
+  }
+}
+.stock-table{
+  width: 100%;
+}

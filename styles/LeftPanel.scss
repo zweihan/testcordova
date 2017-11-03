@@ -4,6 +4,8 @@
   height: 100%;
   background-color: $gray-bg;
   position:relative;
+  transition: width 0.5s;
+  box-shadow: 5px 5px 8px 0 rgba(0, 0, 0, 0.3);
 }
 
 .main-left-panel-open{
@@ -56,6 +58,7 @@
   bottom:0;
   position:absolute;
   width:100%;
+  overflow:auto;
 
 }
 .stocklist-item{

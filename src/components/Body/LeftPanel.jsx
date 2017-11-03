@@ -20,7 +20,7 @@ require("../../../styles/LeftPanel.scss");
                 <span className={"fa close-panel-btn " +(isSearchBarOpen ? "fa-chevron-left" : "fa-chevron-right" )}
                       onClick={this.togglePanelPosition.bind(this)}
                 >
-                x
+
                 </span>
             </div>
             <div className="left-panel-body">
