@@ -11,7 +11,7 @@ export default class StockStateStore {
     @observable stockSearchTerm = "";
     @observable selectedStock = {};
     @observable selectedStockQuote = {};
-
+    liveStockFunction = null;
     constructor(){
 
     }
@@ -27,7 +27,7 @@ export default class StockStateStore {
                 if(this.stockSearchTerm)
                     return stock.symbol.toLowerCase().includes(this.stockSearchTerm.toLowerCase()) || stock.name.toLowerCase().includes(this.stockSearchTerm.toLowerCase());
                 else
-                    return stock;
+                    return [];
             });
             return s;
         }
@@ -36,17 +36,25 @@ export default class StockStateStore {
     @action onSelectStock(stock){
         console.log('selected: ', stock);
         this.selectedStock = stock;
+        if(this.liveStockFunction !== null){
+            clearTimeout(this.liveStockFunction);
+
+        }
         this.getStockQuote();
+
     }
     @action getStockQuote(){
         var stock = this.selectedStock;
         $.get(IEX_BASE_URL + `/stock/${stock.symbol}/quote`).done(function(res){
             this.selectedStockQuote = res;
         }.bind(this));
+        this.liveStockFunction = setTimeout(this.getStockQuote.bind(this), 5000);
     }
+
     @action onStockTermChange(searchTerm){
         this.stockSearchTerm = searchTerm.toUpperCase();
     }
+
     @action getStockUniverse(){
         $.get(IEX_BASE_URL + "/ref-data/symbols").done(function(res){
             this.stockUniverse.replace(res);

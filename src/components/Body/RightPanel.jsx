@@ -8,9 +8,7 @@ export default class RightPanel extends React.Component {
 
     render() {
         var selectedStock = this.props.rootStore.stockState.selectedStock;
-        console.log(this.props.rootStore.stockState);
         var selectedStockQuote = this.props.rootStore.stockState.selectedStockQuote;
-        console.log(selectedStockQuote);
         return <div className="main-right-panel">
             <div className="right-panel-title">{selectedStock.name ? selectedStock.name +"(" +selectedStock.symbol+ ")" : "Pick a Stock"}</div>
             {selectedStockQuote.symbol ?

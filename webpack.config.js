@@ -3,7 +3,6 @@
  */
 const path = require('path');
 const autoprefixer = require("autoprefixer");
-// console.log("asdsad", autoprefixer());
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -13,7 +12,6 @@ var extractScss = new textPlugin({
 });
 module.exports = {
     entry: [
-        'react-hot-loader/patch',
         './src/index.jsx'
     ],
     output: {
@@ -71,7 +69,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new HtmlWebpackPlugin({
            inject: true,

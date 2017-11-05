@@ -9,7 +9,7 @@ export default class StockInfoCard extends React.Component {
         var quote = this.props.stockQuote;
         return <div className="stock-card stock-info">
             <div className="card-header">
-                <div class="price-header">
+                <div className="price-header">
                 <span className="latest-price">{parseFloat(quote.latestPrice).toFixed(2)}</span>
                 <span className={"price-change " + (parseFloat(quote.change) >= 0 ? "pos-change":"neg-change")}>
                     <span className="abs-change ">
@@ -20,7 +20,7 @@ export default class StockInfoCard extends React.Component {
                     </span>
                 </span>
                 </div>
-                <div class="price-info">
+                <div className="price-info">
                 <span className="latest-time">Latest Time: {quote.latestTime}</span>
                 </div>
             </div>
